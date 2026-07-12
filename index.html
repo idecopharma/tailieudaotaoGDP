@@ -145,6 +145,63 @@ footer a:hover{color:var(--red)}
 
 .no-result{text-align:center;color:var(--muted);padding:30px;font-weight:600;display:none}
 
+/* TAB BAR */
+.tabbar{position:sticky;top:68px;z-index:90;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.tabbar .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 22px;scrollbar-width:none}
+.tabbar .wrap::-webkit-scrollbar{display:none}
+.tab-link{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-size:13.5px;font-weight:700;color:var(--muted);padding:8px 16px;border-radius:20px;text-decoration:none;transition:.18s;border:1px solid transparent}
+.tab-link:hover{color:var(--red);background:var(--red-soft)}
+.tab-link.tab-new{color:var(--red-dark);background:var(--red-soft);border-color:#fbcfc7}
+.tab-link .dotnew{width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;box-shadow:0 0 0 3px rgba(238,58,35,.18)}
+
+/* UPDATE SECTION */
+.update-banner{display:flex;gap:16px;align-items:flex-start;background:linear-gradient(120deg,#fff,#fef0ed);border:1px solid #fbcfc7;border-radius:16px;padding:20px 22px;margin-bottom:30px}
+.update-banner .ic{font-size:26px;flex-shrink:0}
+.update-banner h5{font-size:14px;font-weight:800;color:var(--red-dark);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.update-banner p{font-size:14.5px;color:#555;line-height:1.6}
+.update-banner b{color:var(--ink)}
+
+.struct-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:34px}
+.struct-table th{background:#fafafa;text-align:left;font-size:12.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);padding:13px 16px;border-bottom:1px solid var(--line)}
+.struct-table td{padding:14px 16px;font-size:14.5px;border-bottom:1px solid var(--line);vertical-align:top}
+.struct-table tr:last-child td{border-bottom:none}
+.struct-table tr:hover td{background:#fcfcfc}
+.struct-table .segnum{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;color:#fff;font-weight:800;font-size:12px;flex-shrink:0}
+.struct-table .segname{font-weight:700}
+
+.digit-strip{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 34px;justify-content:center}
+.digit-grp{display:flex;flex-direction:column;align-items:center;gap:8px}
+.digit-grp .boxes{display:flex;gap:3px}
+.digit-box{width:30px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff}
+.digit-grp .lbl{font-size:11.5px;font-weight:700;color:var(--muted);text-align:center;max-width:110px;line-height:1.3}
+
+.code-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-bottom:12px}
+.code-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;position:relative;overflow:hidden}
+.code-card::before{content:"";position:absolute;left:0;top:0;height:100%;width:5px;background:var(--c)}
+.code-card h6{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--c);font-weight:800;margin-bottom:10px}
+.code-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.code-card li{display:flex;gap:9px;align-items:flex-start;font-size:14px}
+.code-card li b{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c);font-size:12px;font-weight:800}
+
+.example-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow);margin-bottom:34px}
+.example-card .ex-title{font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.example-card .ex-name{font-size:19px;font-weight:850;margin-bottom:18px}
+.example-card .ex-list{display:flex;flex-direction:column;gap:10px}
+.example-card .ex-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:11px;background:#fafafa}
+.example-card .ex-row .seg{font-weight:850;font-size:15px;color:#fff;border-radius:8px;padding:4px 10px;min-width:44px;text-align:center}
+.example-card .ex-row .desc{font-size:14px;color:#333}
+.example-card .ex-row .desc b{color:var(--ink)}
+.example-card .ex-final{margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--red-soft);color:var(--red-dark);font-weight:700;font-size:14.5px}
+
+.app-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.app-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+.app-card .num{width:38px;height:38px;border-radius:11px;background:var(--red);color:#fff;font-weight:850;display:grid;place-items:center;margin-bottom:14px;font-size:16px}
+.app-card h6{font-size:15px;font-weight:800;margin-bottom:8px}
+.app-card p{font-size:14px;color:var(--muted);line-height:1.6}
+.app-card .rule{margin-top:10px;font-size:13.5px;padding:9px 12px;border-radius:9px;background:#f6f6f6}
+.app-card .rule.ok{background:#f0fdf4;color:#15803d}
+.app-card .rule.warn{background:#fef2f2;color:#b91c1c}
+
 @media(max-width:860px){
   .hero-in{grid-template-columns:1fr;gap:34px;padding:46px 0}
   .foot-grid{grid-template-columns:1fr;gap:26px}
@@ -167,6 +224,16 @@ footer a:hover{color:var(--red)}
   </div>
  </div>
 </header>
+
+<nav class="tabbar">
+  <div class="wrap">
+    <a class="tab-link" href="#top">Trang chủ</a>
+    <a class="tab-link" href="#modules">Tổng quan 7 Module</a>
+    <a class="tab-link" href="#noidung">Ngân hàng câu hỏi</a>
+    <a class="tab-link" href="#quiz">Bài kiểm tra</a>
+    <a class="tab-link tab-new" href="#capnhat"><span class="dotnew"></span>Thông tin cập nhật</a>
+  </div>
+</nav>
 
 <a id="top"></a>
 <section class="hero">
@@ -228,6 +295,147 @@ footer a:hover{color:var(--red)}
  </div>
 </section>
 
+<section class="block" id="capnhat" style="background:#fff;border-top:1px solid var(--line)">
+ <div class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">Cập nhật quy định mới</span>
+    <h2>Cách phân biệt thuốc qua Số đăng ký mới (12 chữ số)</h2>
+    <p>Hướng dẫn đọc hiểu số đăng ký lưu hành thuốc theo quy định mới nhất, áp dụng cho toàn thể CBNV Kinh doanh &amp; Kho.</p>
+  </div>
+
+  <div class="update-banner">
+    <div class="ic">📌</div>
+    <div>
+      <h5>Căn cứ pháp lý</h5>
+      <p><b>Thông tư 12/2025/TT-BYT</b> — Có hiệu lực từ tháng 12/2025. Tài liệu này giúp nhân viên nhận biết nguồn gốc, nhóm thuốc, tính chất kê đơn và năm cấp số đăng ký thông qua cấu trúc 12 chữ số in trên bao bì. <b>Lưu ý:</b> chỉ áp dụng cho các số đăng ký cấp mới theo quy định này, không áp dụng cho số đăng ký cũ (trước 12/2025).</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:19px;font-weight:800;margin-bottom:14px">I. Cấu trúc tổng quát của số đăng ký</h3>
+  <table class="struct-table">
+    <thead>
+      <tr><th>Thứ tự</th><th>Số chữ số</th><th>Tên gọi</th><th>Ý nghĩa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="segnum" style="background:var(--m6)">1</span></td><td>3 chữ số</td><td class="segname">Mã nước sản xuất</td><td>Quốc gia nơi sản xuất thuốc.</td></tr>
+      <tr><td><span class="segnum" style="background:var(--m1)">2</span></td><td>1 chữ số</td><td class="segname">Mã nhóm thuốc</td><td>Phân loại dạng bào chế / nguyên liệu.</td></tr>
+      <tr><td><span class="segnum" style="background:var(--m3)">3</span></td><td>1 chữ số</td><td class="segname">Mã phân loại thuốc</td><td>Phân biệt thuốc Kê đơn (Rx) hay Không kê đơn (OTC).</td></tr>
+      <tr><td><span class="segnum" style="background:var(--m4)">4</span></td><td>1 chữ số</td><td class="segname">Mã phân loại KSĐB</td><td>Phân loại thuốc Kiểm soát đặc biệt.</td></tr>
+      <tr><td><span class="segnum" style="background:var(--m5)">5</span></td><td>4 chữ số</td><td class="segname">Mã thứ tự cấp</td><td>Số thứ tự đăng ký trong năm.</td></tr>
+      <tr><td><span class="segnum" style="background:var(--m2)">6</span></td><td>2 chữ số</td><td class="segname">Mã năm cấp</td><td>Năm cấp số đăng ký.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="digit-strip">
+    <div class="digit-grp">
+      <div class="boxes">
+        <div class="digit-box" style="background:var(--m6)">8</div><div class="digit-box" style="background:var(--m6)">3</div><div class="digit-box" style="background:var(--m6)">3</div>
+      </div>
+      <div class="lbl">Mã nước sản xuất</div>
+    </div>
+    <div class="digit-grp">
+      <div class="boxes"><div class="digit-box" style="background:var(--m1)">1</div></div>
+      <div class="lbl">Mã nhóm thuốc</div>
+    </div>
+    <div class="digit-grp">
+      <div class="boxes"><div class="digit-box" style="background:var(--m3)">0</div></div>
+      <div class="lbl">Mã phân loại (Rx/OTC)</div>
+    </div>
+    <div class="digit-grp">
+      <div class="boxes"><div class="digit-box" style="background:var(--m4)">0</div></div>
+      <div class="lbl">Mã KSĐB</div>
+    </div>
+    <div class="digit-grp">
+      <div class="boxes">
+        <div class="digit-box" style="background:var(--m5)">2</div><div class="digit-box" style="background:var(--m5)">7</div><div class="digit-box" style="background:var(--m5)">9</div><div class="digit-box" style="background:var(--m5)">0</div>
+      </div>
+      <div class="lbl">Mã thứ tự cấp</div>
+    </div>
+    <div class="digit-grp">
+      <div class="boxes"><div class="digit-box" style="background:var(--m2)">2</div><div class="digit-box" style="background:var(--m2)">3</div></div>
+      <div class="lbl">Mã năm cấp</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:19px;font-weight:800;margin-bottom:14px">II. Chi tiết các mã quy ước cần ghi nhớ</h3>
+  <div class="code-grid">
+    <div class="code-card" style="--c:var(--m1)">
+      <h6>1. Mã nhóm thuốc (chữ số thứ 4)</h6>
+      <ul>
+        <li><b>1</b> Hóa dược (thuốc tây thông thường)</li>
+        <li><b>2</b> Dược liệu (đông dược, cao lỏng...)</li>
+        <li><b>3</b> Vaccine</li>
+        <li><b>4</b> Sinh phẩm</li>
+        <li><b>5</b> Nguyên liệu làm thuốc</li>
+      </ul>
+    </div>
+    <div class="code-card" style="--c:var(--m3)">
+      <h6>2. Mã phân loại thuốc (chữ số thứ 5)</h6>
+      <ul>
+        <li><b>0</b> Thuốc không kê đơn — OTC, bán tự do</li>
+        <li><b>1</b> Thuốc kê đơn — Rx, cần đơn bác sĩ</li>
+      </ul>
+    </div>
+    <div class="code-card" style="--c:var(--m4)">
+      <h6>3. Mã Kiểm soát đặc biệt (chữ số thứ 6)</h6>
+      <ul>
+        <li><b>0</b> Thuốc không kiểm soát (thuốc thường)</li>
+        <li><b>1</b> Thuốc gây nghiện (GN)</li>
+        <li><b>2</b> Thuốc hướng thần (HT)</li>
+        <li><b>3</b> Tiền chất (dùng sản xuất thuốc)</li>
+        <li><b>4</b> Thuốc độc (A)</li>
+        <li><b>5</b> Thuốc công nghệ cao / tế bào</li>
+        <li><b>6</b> Thuốc phòng xa (vaccine / dự phòng)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-size:19px;font-weight:800;margin:34px 0 14px">III. Ví dụ minh họa thực tế</h3>
+  <div class="example-card">
+    <div class="ex-title">Sản phẩm</div>
+    <div class="ex-name">Acetylcystein Boston 100mg — Số đăng ký: 833 100 2790 23</div>
+    <div class="ex-list">
+      <div class="ex-row"><span class="seg" style="background:var(--m6)">833</span><span class="desc">Mã nước sản xuất — <b>Mỹ (USA) 🇺🇸</b></span></div>
+      <div class="ex-row"><span class="seg" style="background:var(--m1)">1</span><span class="desc">Mã nhóm thuốc — <b>Hóa dược</b></span></div>
+      <div class="ex-row"><span class="seg" style="background:var(--m3)">0</span><span class="desc">Mã phân loại — <b>Không kê đơn (OTC)</b></span></div>
+      <div class="ex-row"><span class="seg" style="background:var(--m4)">0</span><span class="desc">Mã KSĐB — <b>Thuốc thường, không kiểm soát đặc biệt</b></span></div>
+      <div class="ex-row"><span class="seg" style="background:var(--m5)">2790</span><span class="desc">Mã thứ tự cấp — <b>Số thứ tự 2790</b></span></div>
+      <div class="ex-row"><span class="seg" style="background:var(--m2)">23</span><span class="desc">Mã năm cấp — <b>Cấp năm 2023</b></span></div>
+    </div>
+    <div class="ex-final">✅ Kết luận: Thuốc sản xuất tại Mỹ, thuộc nhóm hóa dược, bán không cần đơn, không thuộc diện kiểm soát đặc biệt, được cấp số đăng ký năm 2023.</div>
+  </div>
+
+  <h3 style="font-size:19px;font-weight:800;margin-bottom:14px">IV. Ứng dụng trong bán hàng &amp; tư vấn</h3>
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="num">1</div>
+      <h6>Kiểm tra nguồn gốc</h6>
+      <p>Nhìn 3 số đầu để biết thuốc được sản xuất tại quốc gia nào (ví dụ: 833 là Mỹ, các mã khác tương ứng với các quốc gia khác).</p>
+    </div>
+    <div class="app-card">
+      <div class="num">2</div>
+      <h6>Tư vấn bán hàng</h6>
+      <p>Dựa vào chữ số thứ 5 để xác định điều kiện bán:</p>
+      <div class="rule ok">Số thứ 5 = 0 → Có thể tư vấn bán trực tiếp, không cần đơn.</div>
+      <div class="rule warn">Số thứ 5 = 1 → Bắt buộc hỏi đơn thuốc, tuân thủ quy định kê đơn.</div>
+    </div>
+    <div class="app-card">
+      <div class="num">3</div>
+      <h6>Quản lý kho &amp; hạn dùng</h6>
+      <p>2 số cuối giúp nhận biết nhanh năm cấp phép, từ đó ước lượng thời gian lưu kho và hạn sử dụng còn lại của sản phẩm.</p>
+    </div>
+  </div>
+
+  <div class="tip" style="margin-top:26px">
+    <div class="bulb">⚠️</div>
+    <div>
+      <h5>Lưu ý quan trọng</h5>
+      <p>Tài liệu này chỉ áp dụng cho các số đăng ký <b>mới</b> theo Thông tư 12/2025/TT-BYT. Nhân viên cần nắm vững để tránh nhầm lẫn trong việc phân loại và bán thuốc, đặc biệt là với các sản phẩm có số đăng ký cấp trước tháng 12/2025.</p>
+    </div>
+  </div>
+ </div>
+</section>
+
 <footer>
  <div class="wrap">
   <div class="foot-grid">
@@ -240,11 +448,13 @@ footer a:hover{color:var(--red)}
       <a href="#modules">Tổng quan 7 Module</a>
       <a href="#noidung">Ngân hàng câu hỏi</a>
       <a href="#quiz">Bài kiểm tra</a>
+      <a href="#capnhat">Thông tin cập nhật</a>
     </div>
     <div>
       <h6>Cơ sở pháp lý</h6>
       <a>TT 03/2018/TT-BYT</a>
       <a>TT 11/2025/TT-BYT</a>
+      <a>TT 12/2025/TT-BYT</a>
       <a>Nguyên tắc FEFO / FIFO</a>
     </div>
   </div>
