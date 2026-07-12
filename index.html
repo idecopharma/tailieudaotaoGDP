@@ -153,6 +153,42 @@ footer a:hover{color:var(--red)}
 .tab-link:hover{color:var(--red);background:var(--red-soft)}
 .tab-link.tab-new{color:var(--red-dark);background:var(--red-soft);border-color:#fbcfc7}
 .tab-link .dotnew{width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;box-shadow:0 0 0 3px rgba(238,58,35,.18)}
+.tab-pdf{margin-left:auto;background:var(--ink);color:#fff!important;border:none;cursor:pointer;font-family:inherit}
+.tab-pdf:hover{background:#000;color:#fff!important}
+.tab-pdf:disabled{opacity:.6;cursor:wait}
+
+/* PRINTABLE PDF DOCUMENT (offscreen render source for html2pdf) */
+.pdf-doc{width:794px;background:#fff;color:#1a1d1f;font-family:'Segoe UI',system-ui,sans-serif;padding:46px 55px 30px}
+.pdf-doc .pdf-header{text-align:center;border-bottom:3px solid var(--red);padding-bottom:20px;margin-bottom:22px}
+.pdf-doc .pdf-header img{height:52px;margin-bottom:10px}
+.pdf-doc .pdf-header h1{font-size:22px;font-weight:850;color:var(--red-dark);letter-spacing:.3px;line-height:1.42;text-transform:uppercase;margin:0}
+.pdf-doc .pdf-header .sub{font-size:12.5px;color:#6b7280;margin-top:8px}
+.pdf-doc .pdf-meta{display:flex;justify-content:space-between;font-size:11.5px;color:#6b7280;margin-bottom:20px;padding-bottom:10px;border-bottom:1px dashed #e5e5e5}
+.pdf-doc h2.pdf-h2{font-size:15px;font-weight:850;color:#fff;background:var(--c,var(--red));padding:9px 14px;border-radius:8px;margin:24px 0 12px}
+.pdf-doc .pdf-goal{font-size:11.5px;color:#6b7280;margin:-6px 0 12px;font-style:italic}
+.pdf-doc .pdf-qa{margin-bottom:9px;padding:9px 13px;border:1px solid #eee;border-radius:9px;background:#fcfcfc}
+.pdf-doc .pdf-qa .q{font-weight:700;font-size:12.5px;margin-bottom:3px}
+.pdf-doc .pdf-qa .q span{color:var(--c,var(--red));margin-right:5px}
+.pdf-doc .pdf-qa .a{font-size:11.8px;color:#333;line-height:1.55}
+.pdf-doc .pdf-qa .a b{color:var(--ink)}
+.pdf-doc .pdf-tip{margin:12px 0 4px;padding:11px 13px;border-radius:9px;background:#fff8e6;border-left:4px solid #eab308;font-size:11.8px;color:#7c5e10;line-height:1.6}
+.pdf-doc .pdf-tip b{display:block;font-size:10.5px;text-transform:uppercase;color:#b45309;margin-bottom:3px}
+.pdf-doc table.pdf-table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:11.5px}
+.pdf-doc table.pdf-table th{background:#f4f4f4;text-align:left;padding:7px 9px;border:1px solid #e5e5e5;font-weight:700}
+.pdf-doc table.pdf-table td{padding:6px 9px;border:1px solid #e5e5e5}
+.pdf-doc .pdf-example{border:1px solid #eee;border-radius:10px;padding:13px 15px;margin:8px 0 18px}
+.pdf-doc .pdf-example .ex-title{font-size:11.5px;font-weight:800;margin-bottom:8px}
+.pdf-doc .pdf-example .ex-row{display:flex;align-items:center;gap:9px;padding:4px 0;font-size:11.8px;border-bottom:1px dashed #eee}
+.pdf-doc .pdf-example .ex-row:last-child{border-bottom:none}
+.pdf-doc .pdf-example .seg{font-weight:800;color:#fff;padding:2px 8px;border-radius:6px;min-width:38px;text-align:center;font-size:11px}
+.pdf-doc .pdf-final{margin-top:8px;padding:9px 11px;border-radius:8px;background:var(--red-soft);color:var(--red-dark);font-size:11.8px;font-weight:700}
+.pdf-doc .pdf-signblock{margin-top:44px}
+.pdf-doc .pdf-signblock .place-date{font-size:11.5px;font-style:italic;color:#555;margin-bottom:14px;text-align:right}
+.pdf-doc .pdf-signblock .signrow{display:flex;justify-content:space-between;gap:20px}
+.pdf-doc .pdf-signblock .box{text-align:center;width:220px}
+.pdf-doc .pdf-signblock .title{font-size:12px;font-weight:800;text-transform:uppercase;margin-bottom:64px;color:var(--ink)}
+.pdf-doc .pdf-signblock .name-line{font-size:11px;color:#999;border-top:1px solid #ccc;padding-top:6px}
+.pdf-doc .pdf-footer-note{margin-top:30px;font-size:10px;color:#999;text-align:center;border-top:1px solid #eee;padding-top:9px}
 
 /* UPDATE SECTION */
 .update-banner{display:flex;gap:16px;align-items:flex-start;background:linear-gradient(120deg,#fff,#fef0ed);border:1px solid #fbcfc7;border-radius:16px;padding:20px 22px;margin-bottom:30px}
@@ -232,6 +268,7 @@ footer a:hover{color:var(--red)}
     <a class="tab-link" href="#noidung">Ngân hàng câu hỏi</a>
     <a class="tab-link" href="#quiz">Bài kiểm tra</a>
     <a class="tab-link tab-new" href="#capnhat"><span class="dotnew"></span>Thông tin cập nhật</a>
+    <button class="tab-link tab-pdf" id="btnExportPDF" type="button">🖨️&nbsp;Xuất PDF</button>
   </div>
 </nav>
 
@@ -469,6 +506,7 @@ footer a:hover{color:var(--red)}
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
 const DATA = [{"id": 1, "color": "var(--m1)", "title": "Khái niệm chung & Vai trò", "goal": "Tư duy nền tảng: chúng ta đang làm gì và tại sao.", "tip": "Các bạn Sales (Thắm, Nhật Vy) và Kho (Phấn) nhớ nhé, SOP không phải tờ giấy để đối phó đoàn kiểm tra, mà là \"tấm khiên\" bảo vệ chính chúng ta khi có sự cố. Làm đúng SOP là bảo vệ giấy phép của công ty!", "qs": [{"n": 1, "q": "SOP là viết tắt của cụm từ tiếng Anh nào?", "a": "Standard Operating Procedure (Quy trình thao tác chuẩn)."}, {"n": 2, "q": "Mục đích chính của việc áp dụng hệ thống SOP trong doanh nghiệp là gì?", "a": "Nhằm hướng dẫn công việc, đảm bảo tính nhất quán, ngăn ngừa sai sót, nhầm lẫn và ô nhiễm chéo."}, {"n": 3, "q": "GDP (Good Distribution Practices) được định nghĩa là gì?", "a": "Là bộ nguyên tắc, tiêu chuẩn về phân phối thuốc nhằm bảo đảm chất lượng thuốc được duy trì qua việc kiểm soát đầy đủ các hoạt động trong quá trình phân phối."}, {"n": 4, "q": "Đối tượng nào phải áp dụng tiêu chuẩn GDP?", "a": "Các cơ sở tham gia vào quá trình phân phối thuốc: cơ sở sản xuất, cung cấp, xuất nhập khẩu, bán buôn (bao gồm IDECO)."}, {"n": 5, "q": "Nguyên tắc \"Viết ra những gì cần làm, làm theo những gì đã viết\" thuộc về hệ thống nào?", "a": "Hệ thống Quy trình thao tác chuẩn (SOP)."}]}, {"id": 2, "color": "var(--m2)", "title": "Cơ sở pháp lý & Hồ sơ", "goal": "Nắm vững luật chơi để không vi phạm những lỗi đáng tiếc.", "tip": "Chị Hoài (Kế toán) và bạn Phấn (Phụ trách kho & GDP) cần đặc biệt lưu ý cập nhật ngay mẫu hồ sơ theo Thông tư 11/2025/TT-BYT và nắm rõ đầu mối cơ quan tiếp nhận mới để tránh thất lạc hồ sơ khi nộp.", "qs": [{"n": 6, "q": "Thông tư nào hiện đang quy định chính về Thực hành tốt phân phối thuốc?", "a": "Thông tư số 03/2018/TT-BYT."}, {"n": 7, "q": "Thông tư nào mới nhất (2025) sửa đổi, bổ sung quy định về GDP, GPP, GSP?", "a": "Thông tư số 11/2025/TT-BYT."}, {"n": 8, "q": "Thời gian định kỳ đánh giá việc duy trì đáp ứng GDP tại cơ sở là bao lâu?", "a": "03 năm kể từ ngày kết thúc lần đánh giá liền trước."}, {"n": 9, "q": "Hồ sơ tổng thể (Site Master File) cần có thông tin về nội dung nào?", "a": "Thông tin chung, nhân sự, kho tàng, thiết bị, hồ sơ tài liệu và tự thanh tra."}, {"n": 10, "q": "Theo TT 11/2025/TT-BYT, cơ quan nào có thẩm quyền tiếp nhận hồ sơ đánh giá GDP?", "a": "Cơ quan chuyên môn về y tế của tỉnh (thay vì Sở Y tế như trước đây)."}]}, {"id": 3, "color": "var(--m3)", "title": "Nhân sự & Đào tạo", "goal": "Con người là mắt xích quan trọng nhất trong chuỗi phân phối.", "tip": "", "qs": [{"n": 11, "q": "Thủ kho bảo quản thuốc tại cơ sở phân phối phải có trình độ chuyên môn tối thiểu là gì?", "a": "Dược sĩ trung học trở lên."}, {"n": 12, "q": "Nhân viên mới cần được đào tạo về những nội dung gì?", "a": "Quy trình SOP, các quy định pháp luật liên quan, kỹ năng chuyên môn và tư vấn."}, {"n": 13, "q": "Tần suất đào tạo định kỳ cho nhân viên cũ về GDP và SOP là bao lâu?", "a": "Từ 6 đến 12 tháng một lần."}, {"n": 14, "q": "Ai chịu trách nhiệm cao nhất trong việc phê duyệt các quy trình SOP tại cơ sở?", "a": "Người chịu trách nhiệm chuyên môn về dược hoặc người đứng đầu cơ sở."}, {"n": 15, "q": "Nhân viên tiếp xúc trực tiếp với thuốc nguy hiểm (độc, phóng xạ...) cần được trang bị gì?", "a": "Được đào tạo đặc biệt và cung cấp trang phục bảo hộ phù hợp."}]}, {"id": 4, "color": "var(--m4)", "title": "Kho tàng & Bảo quản", "goal": "Trái tim của GDP — giữ vững chất lượng từ lúc nhập đến lúc xuất.", "tip": "Bạn Phấn lưu ý đặc biệt với nhóm Mỹ phẩm và Thực phẩm chức năng: nhiều loại yêu cầu nhiệt độ mát (15-25°C) chứ không phải 30°C như thuốc thông thường. Luôn tuân thủ tuyệt đối FEFO vì mỹ phẩm rất dễ biến tính khi cận date.", "qs": [{"n": 16, "q": "Diện tích mặt bằng tối thiểu của khu vực bảo quản thuốc là bao nhiêu?", "a": "30 m² với thể tích 100 m³."}, {"n": 17, "q": "Điều kiện nhiệt độ và độ ẩm tiêu chuẩn trong kho thuốc (nếu không có yêu cầu đặc biệt)?", "a": "Nhiệt độ ≤ 30°C, độ ẩm ≤ 75%."}, {"n": 18, "q": "Tần suất ghi chép nhiệt độ và độ ẩm tại kho là bao nhiêu lần một ngày?", "a": "Ít nhất 2 lần/ngày (thường là 9h sáng và 3h chiều)."}, {"n": 19, "q": "Nguyên tắc FEFO trong quản lý hàng hóa có nghĩa là gì?", "a": "First Expired, First Out — Hàng hết hạn trước xuất trước."}, {"n": 20, "q": "Nguyên tắc FIFO trong quản lý hàng hóa có nghĩa là gì?", "a": "First In, First Out — Hàng nhập trước xuất trước."}, {"n": 21, "q": "Thuốc bị thu hồi hoặc trả về phải được bảo quản như thế nào?", "a": "Phải được bảo quản tại khu vực biệt trữ riêng biệt, có biển hiệu rõ ràng và ngăn chặn việc tự ý sử dụng."}, {"n": 22, "q": "Thiết bị theo dõi nhiệt độ tự ghi cần được đặt ở vị trí nào trong kho?", "a": "Tại những vị trí có khả năng dao động nhiệt độ cao nhất (điểm nóng/lạnh nhất) dựa trên kết quả đánh giá đồng đều nhiệt độ."}, {"n": 23, "q": "Quy trình vệ sinh nhà kho cần thực hiện theo các mốc thời gian nào?", "a": "Hàng ngày (nền nhà, mặt tủ), hàng tuần (trần nhà, góc tường) và hàng tháng (giá kệ, tủ lạnh)."}, {"n": 24, "q": "Hoạt động \"Temperature mapping\" (đánh giá đồng đều nhiệt độ) có mục đích gì?", "a": "Để chứng minh sự đồng nhất về nhiệt độ trong toàn bộ không gian kho và xác định các điểm rủi ro."}, {"n": 25, "q": "Thuốc kiểm soát đặc biệt (gây nghiện, hướng thần) phải được bảo quản thế nào?", "a": "Tại khu vực riêng biệt, có khóa chắc chắn và thực hiện các biện pháp an ninh theo quy định."}]}, {"id": 5, "color": "var(--m5)", "title": "Vận chuyển & Giao nhận", "goal": "Tuyến đầu tiếp xúc khách hàng — đảm bảo thuốc đến tay nguyên vẹn.", "tip": "Góc bán hàng cho Team Sales (Thắm, Nhật Vy): Khi chốt đơn & báo giá, luôn kiểm tra kỹ khả năng giao hàng (còn hàng không, lô hạn dùng đẹp không, giao bao lâu). Khuyến khích khách mua trên 20 hộp/lần để IDECO tối ưu chi phí vận chuyển và đảm bảo cùng lô, cùng hạn dùng.", "qs": [{"n": 26, "q": "Trước khi xếp thuốc lên xe vận chuyển chuyên dụng, tài xế cần làm gì với hệ thống làm lạnh?", "a": "Vận hành hệ thống làm lạnh thùng xe trong tối thiểu 15 phút để đạt nhiệt độ yêu cầu."}, {"n": 27, "q": "Hồ sơ giao hàng-gửi hàng thuốc tối thiểu phải bao gồm những thông tin gì?", "a": "Ngày gửi, tên/địa chỉ bên nhận, tên thuốc, số lượng, điều kiện bảo quản, số lô và hạn dùng."}, {"n": 28, "q": "Trong quá trình vận chuyển, nếu phát hiện sai lệch nhiệt độ, tài xế phải báo cáo cho ai?", "a": "Báo cáo cho cơ sở phân phối và nơi tiếp nhận."}, {"n": 29, "q": "Tại sao không nên để sản phẩm tiếp xúc trực tiếp với đá khô trong bao bì vận chuyển?", "a": "Vì đá khô có thể làm hỏng hoặc gây ảnh hưởng xấu đến chất lượng sản phẩm do nhiệt độ quá thấp (đông băng)."}, {"n": 30, "q": "Trên xe vận chuyển thuốc phải trang bị thiết bị gì để theo dõi điều kiện bảo quản?", "a": "Nhiệt-ẩm kế tự ghi để theo dõi nhiệt độ liên tục suốt hành trình."}]}, {"id": 6, "color": "var(--m6)", "title": "Quản lý chất lượng & CAPA", "goal": "Xử lý sự cố — biến rủi ro thành bài học, không để lỗi lặp lại.", "tip": "Khi khách hàng phàn nàn (viên thuốc vỡ, mỹ phẩm tách nước), bạn Ly (Kế toán) và bạn Thắm cần bình tĩnh phân loại ngay: lỗi do nhà sản xuất hay do IDECO giao nhận/bảo quản. Tuyệt đối không đổ lỗi cho khách hàng, hãy dùng phương pháp \"5 Tại sao\" để tìm nguyên nhân gốc rễ.", "qs": [{"n": 31, "q": "CAPA là viết tắt của các hành động nào?", "a": "Corrective Action (Hành động khắc phục) và Preventive Action (Hành động phòng ngừa)."}, {"n": 32, "q": "Phân biệt Hành động khắc phục và Hành động phòng ngừa?", "a": "Khắc phục là xử lý lỗi đã xảy ra; Phòng ngừa là xử lý nguy cơ chưa xảy ra nhưng tiềm ẩn lỗi."}, {"n": 33, "q": "Công cụ nào thường được dùng để phân tích nguyên nhân gốc rễ (Root Cause Analysis)?", "a": "Biểu đồ xương cá (Fishbone Diagram) hoặc phương pháp 5 Tại sao (5 Whys)."}, {"n": 34, "q": "Khi phát hiện thuốc giả trong chuỗi phân phối, cơ sở cần làm gì ngay lập tức?", "a": "Tách riêng, dán nhãn \"không phải để bán\", đình chỉ kinh doanh và báo cáo ngay cho cơ quan quản lý."}, {"n": 35, "q": "Quy trình xử lý khiếu nại thuốc cần phân biệt rõ hai loại khiếu nại nào?", "a": "Khiếu nại về chất lượng sản phẩm (do sản xuất) và khiếu nại liên quan đến quá trình phân phối (do bảo quản/vận chuyển)."}]}, {"id": 7, "color": "var(--m7)", "title": "Tự thanh tra & Phân loại lỗi", "goal": "Bảo vệ giấy phép — tự soi, tự sửa để đoàn kiểm tra không thể bắt lỗi.", "tip": "Nhớ nhé, \"Tồn tại nghiêm trọng\" đồng nghĩa với việc IDECO sẽ bị rút giấy phép, toàn bộ anh chị em mình sẽ mất việc làm. Việc tự thanh tra định kỳ không phải là hình thức, mà là cách chúng ta tự bảo vệ \"nồi cơm\" của chính mình.", "qs": [{"n": 36, "q": "Tần suất thực hiện tự thanh tra (đánh giá nội bộ) định kỳ là bao lâu?", "a": "Ít nhất một lần mỗi năm."}, {"n": 37, "q": "Lỗi \"Tồn tại nghiêm trọng\" (Critical Deficiency) trong GDP được hiểu là gì?", "a": "Là sai lệch trực tiếp tạo ra sản phẩm kém chất lượng, gây nguy hại tính mạng người dùng hoặc gian lận pháp luật."}, {"n": 38, "q": "Cơ sở có \"Tồn tại nghiêm trọng\" sẽ bị xếp vào mức độ đáp ứng GDP nào?", "a": "Mức độ 3 (Không đáp ứng)."}, {"n": 39, "q": "Sau khi hoàn thành đợt đánh giá nội bộ, tài liệu nào phải được lập và lưu trữ tại bộ phận QA?", "a": "Biên bản đánh giá nội bộ và danh mục các điểm không tuân thủ."}, {"n": 40, "q": "Hệ quả pháp lý khi cơ sở bị kết luận \"Không đáp ứng GDP\" (Mức độ 3) là gì?", "a": "Thu hồi Giấy chứng nhận đủ điều kiện kinh doanh dược và dừng hoạt động phân phối thuốc."}]}];
 
@@ -590,6 +628,153 @@ function renderResult(){
 }
 function restart(){qi=0;score=0;renderQ()}
 renderQ();
+
+/* ---- PDF Export ---- */
+function buildPdfDoc(){
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('vi-VN');
+  const logoSrc = document.querySelector('.brand img').src;
+
+  const modulesHtml = DATA.map(m=>`
+    <h2 class="pdf-h2" style="--c:${m.color}">Module ${m.id}: ${m.title}</h2>
+    <div class="pdf-goal">${m.goal}</div>
+    ${m.qs.map(q=>`
+      <div class="pdf-qa" style="--c:${m.color}">
+        <div class="q"><span>Câu ${q.n}.</span>${q.q}</div>
+        <div class="a"><b>Đáp án:</b> ${q.a}</div>
+      </div>`).join('')}
+    ${m.tip?`<div class="pdf-tip"><b>Góc áp dụng tại IDECO</b>${m.tip}</div>`:''}
+  `).join('');
+
+  const updateHtml = `
+    <h2 class="pdf-h2" style="--c:var(--red)">Phần cập nhật: Cách phân biệt thuốc qua Số đăng ký mới (12 chữ số)</h2>
+    <div class="pdf-goal">Căn cứ: Thông tư 12/2025/TT-BYT — Có hiệu lực từ tháng 12/2025.</div>
+    <table class="pdf-table">
+      <thead><tr><th>Thứ tự</th><th>Số chữ số</th><th>Tên gọi</th><th>Ý nghĩa</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>3 chữ số</td><td>Mã nước sản xuất</td><td>Quốc gia nơi sản xuất thuốc.</td></tr>
+        <tr><td>2</td><td>1 chữ số</td><td>Mã nhóm thuốc</td><td>Phân loại dạng bào chế / nguyên liệu.</td></tr>
+        <tr><td>3</td><td>1 chữ số</td><td>Mã phân loại thuốc</td><td>Kê đơn (Rx) hay Không kê đơn (OTC).</td></tr>
+        <tr><td>4</td><td>1 chữ số</td><td>Mã phân loại KSĐB</td><td>Phân loại thuốc Kiểm soát đặc biệt.</td></tr>
+        <tr><td>5</td><td>4 chữ số</td><td>Mã thứ tự cấp</td><td>Số thứ tự đăng ký trong năm.</td></tr>
+        <tr><td>6</td><td>2 chữ số</td><td>Mã năm cấp</td><td>Năm cấp số đăng ký.</td></tr>
+      </tbody>
+    </table>
+    <table class="pdf-table">
+      <thead><tr><th colspan="2">Mã nhóm thuốc (chữ số thứ 4)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Hóa dược (thuốc tây thông thường)</td></tr>
+        <tr><td>2</td><td>Dược liệu (đông dược, cao lỏng...)</td></tr>
+        <tr><td>3</td><td>Vaccine</td></tr>
+        <tr><td>4</td><td>Sinh phẩm</td></tr>
+        <tr><td>5</td><td>Nguyên liệu làm thuốc</td></tr>
+      </tbody>
+    </table>
+    <table class="pdf-table">
+      <thead><tr><th colspan="2">Mã phân loại thuốc (chữ số thứ 5)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>Thuốc không kê đơn — OTC, bán tự do</td></tr>
+        <tr><td>1</td><td>Thuốc kê đơn — Rx, cần đơn bác sĩ</td></tr>
+      </tbody>
+    </table>
+    <table class="pdf-table">
+      <thead><tr><th colspan="2">Mã Kiểm soát đặc biệt (chữ số thứ 6)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>Thuốc không kiểm soát (thuốc thường)</td></tr>
+        <tr><td>1</td><td>Thuốc gây nghiện (GN)</td></tr>
+        <tr><td>2</td><td>Thuốc hướng thần (HT)</td></tr>
+        <tr><td>3</td><td>Tiền chất (dùng sản xuất thuốc)</td></tr>
+        <tr><td>4</td><td>Thuốc độc (A)</td></tr>
+        <tr><td>5</td><td>Thuốc công nghệ cao / tế bào</td></tr>
+        <tr><td>6</td><td>Thuốc phòng xa (vaccine / dự phòng)</td></tr>
+      </tbody>
+    </table>
+    <div class="pdf-example">
+      <div class="ex-title">Ví dụ: Acetylcystein Boston 100mg — SĐK: 833 100 2790 23</div>
+      <div class="ex-row"><span class="seg" style="background:var(--m6)">833</span> Mã nước sản xuất — Mỹ (USA)</div>
+      <div class="ex-row"><span class="seg" style="background:var(--m1)">1</span> Mã nhóm thuốc — Hóa dược</div>
+      <div class="ex-row"><span class="seg" style="background:var(--m3)">0</span> Mã phân loại — Không kê đơn (OTC)</div>
+      <div class="ex-row"><span class="seg" style="background:var(--m4)">0</span> Mã KSĐB — Thuốc thường</div>
+      <div class="ex-row"><span class="seg" style="background:var(--m5)">2790</span> Mã thứ tự cấp — 2790</div>
+      <div class="ex-row"><span class="seg" style="background:var(--m2)">23</span> Mã năm cấp — 2023</div>
+      <div class="pdf-final">✅ Kết luận: Thuốc Mỹ, hóa dược, bán không cần đơn, không kiểm soát đặc biệt, cấp năm 2023.</div>
+    </div>
+    <div class="pdf-tip">
+      <b>Ứng dụng trong bán hàng &amp; tư vấn</b>
+      1) Kiểm tra nguồn gốc: nhìn 3 số đầu để biết thuốc nước nào.<br>
+      2) Tư vấn bán hàng: chữ số thứ 5 = 0 → bán không cần đơn; = 1 → bắt buộc hỏi đơn thuốc.<br>
+      3) Quản lý kho &amp; hạn dùng: 2 số cuối giúp xác định năm cấp phép, ước lượng hạn sử dụng còn lại.
+    </div>
+    <div class="pdf-tip" style="background:#fef2f2;border-left-color:#dc2626;color:#7f1d1d">
+      <b>Lưu ý quan trọng</b>
+      Chỉ áp dụng cho số đăng ký cấp mới theo Thông tư 12/2025/TT-BYT, không áp dụng cho số đăng ký cũ (trước 12/2025).
+    </div>
+  `;
+
+  return `
+    <div class="pdf-doc">
+      <div class="pdf-header">
+        <img src="${logoSrc}" alt="IDECO">
+        <h1>Bảng kiến thức đào tạo GDP-SOP<br>Công ty IDECO — Định kỳ</h1>
+        <div class="sub">Công ty phân phối Dược phẩm &amp; Mỹ phẩm IDECO — Tài liệu đào tạo nội bộ</div>
+      </div>
+      <div class="pdf-meta">
+        <span>Căn cứ: TT 03/2018/TT-BYT • TT 11/2025/TT-BYT • TT 12/2025/TT-BYT</span>
+        <span>Ngày xuất bản: ${dateStr}</span>
+      </div>
+      ${modulesHtml}
+      ${updateHtml}
+      <div class="pdf-signblock">
+        <div class="place-date">TP. Hồ Chí Minh, ngày ..... tháng ..... năm ${today.getFullYear()}</div>
+        <div class="signrow">
+          <div class="box">
+            <div class="title">Dược sĩ chuyên môn</div>
+            <div class="name-line">(Ký, ghi rõ họ tên)</div>
+          </div>
+          <div class="box">
+            <div class="title">Giám đốc</div>
+            <div class="name-line">(Ký, ghi rõ họ tên)</div>
+          </div>
+        </div>
+      </div>
+      <div class="pdf-footer-note">IDECO Pharma © ${today.getFullYear()} — Tài liệu lưu hành nội bộ. Viết ra những gì cần làm — Làm theo những gì đã viết.</div>
+    </div>`;
+}
+
+function exportPDF(){
+  const btn = document.getElementById('btnExportPDF');
+  const oldHTML = btn.innerHTML;
+  btn.innerHTML = 'Đang tạo PDF...';
+  btn.disabled = true;
+
+  const holder = document.createElement('div');
+  holder.style.position = 'fixed';
+  holder.style.left = '-99999px';
+  holder.style.top = '0';
+  holder.innerHTML = buildPdfDoc();
+  document.body.appendChild(holder);
+
+  const opt = {
+    margin: [10,10,14,10],
+    filename: 'BANG-KIEN-THUC-DAO-TAO-GDP-SOP-IDECO.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css','avoid-all'], avoid: ['.pdf-qa','.pdf-tip','.pdf-example','.pdf-signblock','table.pdf-table'] }
+  };
+
+  html2pdf().set(opt).from(holder.querySelector('.pdf-doc')).save().then(()=>{
+    document.body.removeChild(holder);
+    btn.innerHTML = oldHTML;
+    btn.disabled = false;
+  }).catch(()=>{
+    document.body.removeChild(holder);
+    btn.innerHTML = oldHTML;
+    btn.disabled = false;
+    alert('Có lỗi khi tạo PDF, vui lòng thử lại.');
+  });
+}
+document.getElementById('btnExportPDF').addEventListener('click', exportPDF);
 
 /* ---- back to top ---- */
 const totop=document.getElementById('totop');
